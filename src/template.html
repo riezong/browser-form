@@ -9,20 +9,26 @@
     <form id="form" novalidate>
       <div>
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" />
+        <input type="email" name="email" id="email" required />
         <span class="error" aria-live="polite"></span>
       </div>
       <div>
         <label for="country">Country</label>
-        <input type="text" name="country" id="country" />
+        <input type="text" name="country" id="country" required />
       </div>
       <div>
         <label for="postal-code">Postal Code</label
-        ><input type="number" name="postal-code" id="postalCode" />
+        ><input
+          type="number"
+          inputmode="numeric"
+          name="postal-code"
+          id="postalCode"
+          required
+        />
       </div>
       <div>
-        <label for="password">Password</label
-        ><input type="text" name="password" id="password" />
+        <label for="password">Password</label>
+        <input type="text" name="password" id="password" required />
       </div>
       <div>
         <label for="password-confirmation">Confirm Password</label>
@@ -30,6 +36,7 @@
           type="text"
           name="password-confirmation"
           id="passwordConfirmation"
+          required
         />
       </div>
       <div><button type="submit" id="submit">Submit</button></div>

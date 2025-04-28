@@ -1,4 +1,5 @@
 import "./style.css";
+import countryList from "./country-list";
 
 const form = document.getElementById("form");
 const email = document.getElementById("email");
@@ -21,45 +22,86 @@ const isValidEmail = () => {
   return validity;
 };
 
-email.addEventListener("input", (event) => {
-  event.preventDefault();
-  if (email.validity.typeMismatch) {
-    console.log("Not an email");
-  }
-});
+// Check if the country is valid
+const isValidCountry = () => {
+  const validity = countryList.includes(country.value.trim());
+  return validity;
+};
 
-country.addEventListener("input", (event) => {
-  event.preventDefault();
-  if (country.validity.typeMismatch) {
-    console.log("Not an email");
-  }
-});
+// Regular expression for postal code validation
+const postalCodeRegExp = /^[0-9]/;
 
-postalCode.addEventListener("input", (event) => {
-  event.preventDefault();
-  if (postalCode.validity.typeMismatch) {
-    console.log("Not an email");
-  }
-});
+// Check if the postal code is valid
+const isValidPostalCode = () => {
+  const validity =
+    postalCode.value.length !== 0 && postalCodeRegExp.test(postalCode.value);
+  return validity;
+};
 
-password.addEventListener("input", (event) => {
-  event.preventDefault();
-  if (password.validity.typeMismatch) {
-    console.log("Not an email");
-  }
-});
+// Check if the password is valid
+const isValidPassword = () => {
+  const validity = password.value.length !== 0;
+  return validity;
+};
 
-passwordConfirmation.addEventListener("input", (event) => {
+// Check if the passwords match
+const isPasswordMatch = () => {
+  const validity =
+    passwordConfirmation.value === password.value &&
+    passwordConfirmation.value !== "";
+  return validity;
+};
+
+email.addEventListener("blur", (event) => {
   event.preventDefault();
-  if (passwordConfirmation.value === "") {
-    console.log("Cannot be empty");
-  } else if (passwordConfirmation.value === password.value) {
-    console.log("Passwords match");
+  if (isValidEmail()) {
+    console.log("okay");
   } else {
-    console.log("Passwords don't match");
+    console.log("Not an email");
+  }
+});
+
+country.addEventListener("blur", (event) => {
+  event.preventDefault();
+  if (isValidCountry()) {
+    console.log("okay");
+  } else {
+    console.log("country doesn't exist");
+  }
+});
+
+postalCode.addEventListener("blur", (event) => {
+  event.preventDefault();
+  if (isValidPostalCode()) {
+    console.log("okay");
+  } else {
+    console.log("invalid postcode");
+  }
+});
+
+password.addEventListener("blur", (event) => {
+  event.preventDefault();
+  if (isValidPassword()) {
+    console.log("okay");
+  } else {
+    console.log("invalid password");
+  }
+});
+
+passwordConfirmation.addEventListener("blur", (event) => {
+  event.preventDefault();
+  if (isPasswordMatch()) {
+    console.log("passwords match");
+  } else {
+    console.log("passwords don't match");
   }
 });
 
 submit.addEventListener("click", (event) => {
   event.preventDefault();
+  console.log("email is " + isValidEmail());
+  console.log("country is " + isValidCountry());
+  console.log("postal code is " + isValidPostalCode());
+  console.log("password is " + isValidPassword());
+  console.log("confirm password is " + isPasswordMatch());
 });
