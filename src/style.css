@@ -61,18 +61,40 @@ h6 {
 }
 
 input {
-  margin-top: 10px;
+  margin-bottom: 10px;
   border: solid 1px grey;
   border-radius: 4px;
   padding: 4px;
 }
 
-input:valid {
+input.valid {
   border: solid 1px blue;
 }
 
-input:invalid {
-  border: solid 1px red;
+/* invalid fields */
+input.invalid {
+  border: 2px solid #900;
+  background-color: #fdd;
+}
+
+input:focus.invalid {
+  outline: none;
+  /* make sure keyboard-only users see a change when focusing */
+  border-style: dashed;
+}
+
+/* error messages */
+.error {
+  width: 100%;
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+  box-sizing: border-box;
+}
+
+.active {
+  padding: 0.3rem;
 }
 
 #submit {

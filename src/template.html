@@ -8,36 +8,44 @@
   <body>
     <form id="form" novalidate>
       <div>
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required />
-        <span class="error" aria-live="polite"></span>
+        <label for="email"><span>Please enter an email address:</span></label>
+        <input type="email" name="email" id="email" />
+        <span id="emailError" class="error" aria-live="polite"></span>
       </div>
       <div>
-        <label for="country">Country</label>
-        <input type="text" name="country" id="country" required />
+        <label for="country"><span>Please enter a country</span></label>
+        <input type="text" name="country" id="country" />
+        <span id="countryError" class="error" aria-live="polite"></span>
       </div>
       <div>
-        <label for="postal-code">Postal Code</label
+        <label for="postal-code"><span>Please enter a postal code</span></label
         ><input
           type="number"
           inputmode="numeric"
           name="postal-code"
           id="postalCode"
-          required
         />
+        <span id="postalCodeError" class="error" aria-live="polite"></span>
       </div>
       <div>
-        <label for="password">Password</label>
-        <input type="text" name="password" id="password" required />
+        <label for="password"><span>Create a password</span></label>
+        <input type="text" name="password" id="password" />
+        <span id="passwordError" class="error" aria-live="polite"></span>
       </div>
       <div>
-        <label for="password-confirmation">Confirm Password</label>
+        <label for="password-confirmation"
+          ><span>Re-enter your password</span></label
+        >
         <input
           type="text"
           name="password-confirmation"
           id="passwordConfirmation"
-          required
         />
+        <span
+          id="passwordConfirmationError"
+          class="error"
+          aria-live="polite"
+        ></span>
       </div>
       <div><button type="submit" id="submit">Submit</button></div>
     </form>
